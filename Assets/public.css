@@ -1,3 +1,11 @@
+#main {
+    background-color: #6375e3;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+
+}
 #Menu{
     display: flex;
     flex-direction: column;
