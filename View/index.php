@@ -1,3 +1,8 @@
+<?php
+session_start()
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +16,12 @@
     <header>
         <div id="Menu">
             <div id="Menu">
-                <nav><a href="#">test</a></nav>
-                <nav><a href="#">test</a></nav>
-                <nav><a href="#">test</a></nav>
-                <nav><a href="#">test</a></nav>
+            <nav><a href="index.php">Home</a></nav>
+            <nav><a href="AllFunc.php">Logout</a></nav>
+            <nav><a href="Login.php">Login</a></nav>
+            <nav><a href="index.php">Panel</a></nav>
             </div>
         </div>
     </header>
-    
-
 </body>
 </html>

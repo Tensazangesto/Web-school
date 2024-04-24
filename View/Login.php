@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+function checkLog(): bool
+{
+    if (isset($_SESSION["checkLog"]) && $_SESSION["checkLog"] === true)
+        return true;
+
+    return false;
+}
+function checkAdmin(): bool
+{
+    if (isset($_SESSION["checkLog"]) && $_SESSION["checkLog"] === true && $_SESSION["user_type"] == 1)
+        return true;
+
+    return false;
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,24 +34,28 @@
 <body id="main">
     <header>
         <div id="Menu">
-            <nav><a href="#">test</a></nav>
-            <nav><a href="#">test</a></nav>
-            <nav><a href="#">test</a></nav>
-            <nav><a href="#">test</a></nav>
+            <nav><a href="index.php">Home</a></nav>
+            <?php if(empty($_SESSION["checkLog"])){ ?>
+                <nav><a href="http://localhost/Web-school/View/Login.php">Login</a></nav>
+                <?php } ?>
+            <?php
+            if (checkLog()) {?>
+            <nav><a href="AllFunc.php">Logout</a></nav>
+            <?php }?>
+            
+            <nav><a href="index.php">Panel</a></nav>
         </div>
     </header>
-    <div >
+    <div>
         <div id="LoginBox">
             <div id="rightSide">
-                <form action="welcom.php" method="post">
+                <form action="AllFunc.php" method="post">
                     <div id="inputs">
                         <img src="../assets/img/nike-512.png" alt="" id="nikesign">
                         <input type="text" placeholder="name" name="Username">
                         <input type="password" placeholder="Password" name="Pass">
                         <div id="setBox">
                             <button type="submit">sign up</button>
-                            <a href="register.php">don't have an acount?</a>
-
                         </div>
                 </form>
             </div>
