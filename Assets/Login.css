@@ -1,0 +1,128 @@
+#main {
+    background-color: #6375e3;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+
+}
+
+#LoginBox {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    height: 75vh;
+    width: 110vh;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+#nikesign {
+    height: 100px;
+    width: 100px;
+}
+
+#rightSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    width: 50vh;
+    background-color: #ffffff;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+#leftSide {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 75vh;
+    width: 60vh;
+    background-color: #7278f4;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+#inputs {
+    background-color: #fffbfa;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 70vh;
+    width: 50vh;
+    border-bottom-left-radius: 180px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+
+}
+
+#inputs input{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+    width: 250px;
+    padding: 20px;
+
+
+}
+
+#setBox a{
+    text-decoration: none;
+    color: #846df5;
+}
+
+#setBox button{
+    background-color: #7377f2;
+    border: none;
+    width: 65px;
+    height: 25px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#setBox{
+    height: 15vh;
+    width: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+#leftSide div{
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+#leftSide div button{
+    width: 85px;
+    height: 45px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border: none;
+    margin-bottom: 10px;
+    background-color: #fdfdfd69;
+}
+
+img {
+    width: 280px;
+    height: 330px;
+}
+
+
+#icons{
+    width: 30vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+}                   
