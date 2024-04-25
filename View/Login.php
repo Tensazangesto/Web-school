@@ -1,59 +1,35 @@
-<?php
-session_start();
-
-function checkLog(): bool
-{
-    if (isset($_SESSION["checkLog"]) && $_SESSION["checkLog"] === true)
-        return true;
-
-    return false;
-}
-function checkAdmin(): bool
-{
-    if (isset($_SESSION["checkLog"]) && $_SESSION["checkLog"] === true && $_SESSION["user_type"] == 1)
-        return true;
-
-    return false;
-}
-
-?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Assets/Login.css">
-    <link rel="stylesheet" href="../Assets/public.css">
-    <title>login page</title>
+<?php include("HeaderSession.php");
+if (isset($_SESSION["checkLog"]) == true) {
+    header("location: http://localhost/Web-school/View/");
+} ?>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../Assets/Login.css">
+<link rel="stylesheet" href="../Assets/public.css">
+<title>login page</title>
 </head>
 
 <body id="main">
     <header>
         <div id="Menu">
             <nav><a href="index.php">Home</a></nav>
-            <?php if(empty($_SESSION["checkLog"])){ ?>
+            <?php if (empty($_SESSION["checkLog"])) { ?>
                 <nav><a href="http://localhost/Web-school/View/Login.php">Login</a></nav>
-                <?php } ?>
-            <?php
-            if (checkLog()) {?>
-            <nav><a href="AllFunc.php">Logout</a></nav>
-            <?php }?>
-            
-            <nav><a href="index.php">Panel</a></nav>
+            <?php } ?>
+            <?php if (checkLog()) { ?>
+                <nav><a href="index.php">Panel</a></nav>
+            <?php } ?>
         </div>
     </header>
     <div>
         <div id="LoginBox">
             <div id="rightSide">
-                <form action="AllFunc.php" method="post">
+                <form action="http://localhost/Web-school/View/AllFunc.php" method="post">
                     <div id="inputs">
                         <img src="../assets/img/nike-512.png" alt="" id="nikesign">
                         <input type="text" placeholder="name" name="Username">
                         <input type="password" placeholder="Password" name="Pass">
+                        <input type="hidden" name="action" value="Login">
                         <div id="setBox">
                             <button type="submit">sign up</button>
                         </div>
@@ -74,11 +50,11 @@ function checkAdmin(): bool
         <div id="leftSide">
             <img src="../assets/img/download.png" alt="">
             <div>
-                <form action="register.php" method="get">
+                <form action="#" method="get">
                     <button>sign up</button>
                 </form>
-                <form action="index.php" method="get">
-                    <button href="index.php">login</button>
+                <form action="#" method="get">
+                    <button>login</button>
                 </form>
             </div>
         </div>

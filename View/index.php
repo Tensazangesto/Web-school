@@ -1,11 +1,6 @@
 <?php
-session_start()
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+include("HeaderSession.php");
+ ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Assets/index.css">
@@ -14,13 +9,20 @@ session_start()
 </head>
 <body id="main">
     <header>
-        <div id="Menu">
-            <div id="Menu">
+    <div id="Menu">
             <nav><a href="index.php">Home</a></nav>
-            <nav><a href="AllFunc.php">Logout</a></nav>
-            <nav><a href="Login.php">Login</a></nav>
+            <?php
+             if(empty($_SESSION["checkLog"])){;?>
+                <nav><a href="http://localhost/Web-school/View/Login.php">Login</a></nav>
+                <?php } ?>
+            <?php
+            if (checkLog()) {?>
+            <nav><a href="http://localhost/Web-school/View/AllFunc.php?action=logout">Logout</a></nav>
+            
+            
             <nav><a href="index.php">Panel</a></nav>
-            </div>
+            <?php }?>
+        </div>
         </div>
     </header>
 </body>
