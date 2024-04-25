@@ -30,8 +30,7 @@
 #leftSide {
     display: flex;
     align-items: center;
-    flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     height: 75vh;
     width: 60vh;
     background-color: #7278f4;

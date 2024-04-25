@@ -21,7 +21,3 @@ function checkAdmin(): bool
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>

@@ -2,6 +2,9 @@
 if (isset($_SESSION["checkLog"]) == true) {
     header("location: http://localhost/Web-school/View/");
 } ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../Assets/Login.css">
@@ -15,9 +18,6 @@ if (isset($_SESSION["checkLog"]) == true) {
             <nav><a href="index.php">Home</a></nav>
             <?php if (empty($_SESSION["checkLog"])) { ?>
                 <nav><a href="http://localhost/Web-school/View/Login.php">Login</a></nav>
-            <?php } ?>
-            <?php if (checkLog()) { ?>
-                <nav><a href="index.php">Panel</a></nav>
             <?php } ?>
         </div>
     </header>
@@ -50,12 +50,7 @@ if (isset($_SESSION["checkLog"]) == true) {
         <div id="leftSide">
             <img src="../assets/img/download.png" alt="">
             <div>
-                <form action="#" method="get">
-                    <button>sign up</button>
-                </form>
-                <form action="#" method="get">
-                    <button>login</button>
-                </form>
+                
             </div>
         </div>
     </div>
