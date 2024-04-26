@@ -1,0 +1,43 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(34, 34, 235);
+}
+
+
+body form{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body form div{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+body form div input{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+button{
+    padding: 10px;
+    width: 170px;
+    border: none;
+    border-radius: 10px;
+}
+input{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}

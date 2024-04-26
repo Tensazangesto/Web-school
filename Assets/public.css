@@ -35,7 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 5px;
 }
     
 #Menu nav:hover{
@@ -45,4 +45,6 @@
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+    padding: 5px;
+}

@@ -47,10 +47,10 @@ function userType()
             <img src="<?php echo $_SESSION['imgAddrLogin']; ?>">
         <?php } ?>
         <?php if (isset($_SESSION['User']) && checkAdmin()) { ?>
-            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=edit">Edit</a></button>
+            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=Edit">Edit</a></button>
         <?php } ?>
         <?php if (isset($_SESSION['User']) && checkAdmin()) { ?>
-            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=edit">Insert</a></button>
+            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=insert">Insert</a></button>
         <?php } ?>
     </div>
     <div id="rightSide">
@@ -67,7 +67,7 @@ function userType()
                 </tr>
             </thead>
             <tbody>
-                <?php if (isset($_SESSION['AdminList'])) { ?>
+                <?php if (checkAdmin()&& isset($_SESSION['AdminList'])) { ?>
                     <?php foreach ($_SESSION['AdminList'] as  $value) { ?>
                         </tr>
                         <th scope="row"><?php echo $ID = $value['id'] ?></th>

@@ -6,7 +6,7 @@ fetchData();
 function main()
 {
 
-  $action = $_REQUEST['action'];
+  $action = $_REQUEST['action'] ?? '';
 
   switch ($action) {
     case 'logout':
@@ -23,8 +23,17 @@ function main()
     case 'Del':
       Delete();
       break;
-    case 'edit':
+    case 'Edit':
       Edit();
+      break;
+    case 'insert':
+      insert();
+      break;
+    case 'actEdit':
+      ActEdit();
+      break;
+    case 'actInsert':
+      ActInsert();
       break;
     default:
       echo 0;
@@ -34,7 +43,8 @@ function main()
 
 
 
-function Delete()  {
+function Delete()
+{
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -44,7 +54,7 @@ function Delete()  {
     echo ("Connection failed: " . mysqli_connect_error());
     return;
   }
-  $Id = $_REQUEST['id'];
+  $Id = $_REQUEST['id'] ?? '';
   $realID = mysqli_real_escape_string($conn, $Id);
   $sql = "DELETE FROM users WHERE `users`.`id` = $realID";
   $result = mysqli_query($conn, $sql);
@@ -53,24 +63,26 @@ function Delete()  {
   return header("Location: http://localhost/Web-school/View/Panel.php");
 }
 
-function Edit()  {
-  
+function Edit()
+{
+  header("Location: http://localhost/Web-school/View/ChangePanel.php?Editorinsert=edit");
 }
-
+function insert()
+{
+  header("Location: http://localhost/Web-school/View/ChangePanel.php?Editorinsert=insert");
+}
 
 function Login()
 {
-
-
 
   $servername = "localhost";
   $username = "root";
   $password = "";
   $dbname = "shop_db";
-  $Uname = $_REQUEST['Username'];
-  $Pass = $_REQUEST['Pass'];
   // Create connection
   $conn = mysqli_connect($servername, $username, $password, $dbname);
+  $Uname = mysqli_real_escape_string($conn, $_REQUEST['Username'] ?? "");
+  $Pass = mysqli_real_escape_string($conn, $_REQUEST['Pass'] ?? "");
   // Check connection
   if (!$conn) {
     echo ("Connection failed: " . mysqli_connect_error());
@@ -152,4 +164,49 @@ function UserInfo()
     echo "0 results";
   }
   mysqli_close($conn);
+}
+
+
+function ActEdit()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "shop_db";
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  if (!$conn) {
+    echo ("Connection failed: " . mysqli_connect_error());
+    return;
+  }
+  $IDofUser = mysqli_real_escape_string($conn, $_REQUEST['UserID'] ?? '');
+  $newName = mysqli_real_escape_string($conn, $_REQUEST['UserName'] ?? '');
+  $newPass = mysqli_real_escape_string($conn, $_REQUEST['password'] ?? '');
+  $newUsertype = mysqli_real_escape_string($conn, $_REQUEST['UserType'] ?? '');
+  $newimg = mysqli_real_escape_string($conn, $_REQUEST['imgAddr'] ?? '');
+
+  $sql = "UPDATE `users` SET `Name` = '$newName', `pass` = '$newPass', `user_type` = '$newUsertype', `img_addr` = '$newimg' WHERE `users`.`id` = $IDofUser";
+  $res = mysqli_query($conn, $sql);
+  mysqli_close($conn);
+  return header("Location: http://localhost/Web-school/View/Panel.php");
+}
+
+function ActInsert()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "shop_db";
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+  $newName = mysqli_real_escape_string($conn, $_REQUEST['UserName'] ?? '');
+  $newPass = mysqli_real_escape_string($conn, $_REQUEST['password'] ?? '');
+  $newUsertype = mysqli_real_escape_string($conn, $_REQUEST['UserType'] ?? '');
+  $newimg = mysqli_real_escape_string($conn, $_REQUEST['imgAddr'] ?? '');
+
+  $sql = "INSERT INTO `users` (`Name`, `pass`, `user_type`, `img_addr`) VALUES ('$newName', '$newPass', '$newUsertype', '$newimg')";
+  $res = mysqli_query($conn, $sql);
+  mysqli_close($conn);
+  return header("Location: http://localhost/Web-school/View/Panel.php");
 }
