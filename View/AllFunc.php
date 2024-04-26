@@ -186,18 +186,10 @@ function ActEdit()
 
   $sql = "UPDATE `users` SET ";
 
-  if (!empty($newName)) {
-    $sql .= "`Name` = '$newName', ";
-  }
-  if (!empty($newPass)) {
-    $sql .= "`pass` = '$newPass', ";
-  }
-  if (!empty($newUsertype)) {
-    $sql .= "`user_type` = '$newUsertype', ";
-  }
-  if (!empty($newimg)) {
-    $sql .= "`imgAddr` = '$newimg', ";
-  }
+  if (!empty($newName)) {$sql .= "`Name` = '$newName', ";}
+  if (!empty($newPass)) {$sql .= "`pass` = '$newPass', ";}
+  if (!empty($newUsertype)) {$sql .= "`user_type` = '$newUsertype', ";}
+  if (!empty($newimg)) {$sql .= "`imgAddr` = '$newimg', ";}
 
   // Remove the last comma and space
   $sql = rtrim($sql, ', ');
