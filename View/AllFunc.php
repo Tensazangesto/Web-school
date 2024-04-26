@@ -184,7 +184,26 @@ function ActEdit()
   $newUsertype = mysqli_real_escape_string($conn, $_REQUEST['UserType'] ?? '');
   $newimg = mysqli_real_escape_string($conn, $_REQUEST['imgAddr'] ?? '');
 
-  $sql = "UPDATE `users` SET `Name` = '$newName', `pass` = '$newPass', `user_type` = '$newUsertype', `img_addr` = '$newimg' WHERE `users`.`id` = $IDofUser";
+  $sql = "UPDATE `users` SET ";
+
+  if (!empty($newName)) {
+    $sql .= "`Name` = '$newName', ";
+  }
+  if (!empty($newPass)) {
+    $sql .= "`pass` = '$newPass', ";
+  }
+  if (!empty($newUsertype)) {
+    $sql .= "`user_type` = '$newUsertype', ";
+  }
+  if (!empty($newimg)) {
+    $sql .= "`imgAddr` = '$newimg', ";
+  }
+
+  // Remove the last comma and space
+  $sql = rtrim($sql, ', ');
+
+  $sql .= " WHERE `users`.`id` = $IDofUser";
+
   $res = mysqli_query($conn, $sql);
   mysqli_close($conn);
   return header("Location: http://localhost/Web-school/View/Panel.php");

@@ -15,10 +15,9 @@ $Action = $_REQUEST['Editorinsert'];
 </head>
 
 <body>
-    <!-- INSERT INTO `users` (`Name`, `pass`, `user_type`, `img_addr`, `id`) VALUES ('helloD', '456', '1', '', '15'); -->
     <?php if ($Action == "edit") { ?>
         <form action="http://localhost/Web-school/View/AllFunc.php" method="get">
-            <input type="text" placeholder="Id of user" name="UserID" >
+            <input type="text" placeholder="Id of user" name="UserID">
             <div><input type="text" placeholder="User name" name="UserName"><input type="text" placeholder="Password" name="password"></input></div>
             <div><input type="text" placeholder="User type" name="UserType"><input type="text" placeholder="image addres" name="imgAddr"></input></div>
             <input type="hidden" name="action" value="actEdit">
