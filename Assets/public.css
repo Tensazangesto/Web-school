@@ -13,7 +13,7 @@
     align-items: center;
     height: 85vh;
     background-color: #fffbfa;
-    width: 7vh;
+    width: 10vh;
     border-radius: 30px
 }
 
@@ -35,6 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px;
 }
     
 #Menu nav:hover{

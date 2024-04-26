@@ -1,7 +1,7 @@
 <?php
 include("HeaderSession.php");
 main();
-
+fetchData();
 
 function main()
 {
@@ -20,6 +20,12 @@ function main()
     case 'pan':
       Panel();
       break;
+    case 'Del':
+      Delete();
+      break;
+    case 'edit':
+      Edit();
+      break;
     default:
       echo 0;
       break;
@@ -28,6 +34,28 @@ function main()
 
 
 
+function Delete()  {
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "shop_db";
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  if (!$conn) {
+    echo ("Connection failed: " . mysqli_connect_error());
+    return;
+  }
+  $Id = $_REQUEST['id'];
+  $realID = mysqli_real_escape_string($conn, $Id);
+  $sql = "DELETE FROM users WHERE `users`.`id` = $realID";
+  $result = mysqli_query($conn, $sql);
+  mysqli_close($conn);
+  fetchData();
+  return header("Location: http://localhost/Web-school/View/Panel.php");
+}
+
+function Edit()  {
+  
+}
 
 
 function Login()

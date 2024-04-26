@@ -1,7 +1,9 @@
 <?php include("HeaderSession.php");
+fetchData();
 if (empty($_SESSION["checkLog"])) {
     header("location: http://localhost/Web-school/View/Login.php");
 }
+
 function userType()
 {
     if ($_SESSION['user_type'] == 0) {
@@ -23,7 +25,7 @@ function userType()
     <title>Document</title>
 </head>
 
-<body>
+<body class="bg-primary ">
     <header>
         <div id="Menu">
             <nav><a href="index.php">Home</a></nav>
@@ -44,6 +46,12 @@ function userType()
         <?php if (isset($_SESSION['User'])) { ?>
             <img src="<?php echo $_SESSION['imgAddrLogin']; ?>">
         <?php } ?>
+        <?php if (isset($_SESSION['User']) && checkAdmin()) { ?>
+            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=edit">Edit</a></button>
+        <?php } ?>
+        <?php if (isset($_SESSION['User']) && checkAdmin()) { ?>
+            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=edit">Insert</a></button>
+        <?php } ?>
     </div>
     <div id="rightSide">
         <table class="table">
@@ -62,7 +70,7 @@ function userType()
                 <?php if (isset($_SESSION['AdminList'])) { ?>
                     <?php foreach ($_SESSION['AdminList'] as  $value) { ?>
                         </tr>
-                        <th scope="row"><?php echo $value['id'] ?></th>
+                        <th scope="row"><?php echo $ID = $value['id'] ?></th>
                         <td><?php echo $value['Name'] ?></td>
                         <td><?php echo $value['pass'] ?></td>
                         <td>
@@ -75,8 +83,7 @@ function userType()
                             ?></td>
                         <?php if (checkAdmin()) { ?>
                             <td>
-                                <button><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=edit">Edit</a></button>
-                                <button><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=Del">Delete</a></button>
+                                <button class="btnStyleDel"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=Del&id=<?php echo $value['id'] ?>">Delete</a></button>
                             </td>
                         <?php } ?>
                         <tr>
