@@ -15,9 +15,4 @@ function checkAdmin(): bool
         return true;
 
     return false;
-}
-
-?>
-
-
-
+}?>

@@ -57,8 +57,9 @@ function Login()
     $row = mysqli_fetch_array($result);
     $_SESSION["checkLog"] = true;
     $_SESSION["name"] = $row['Name'];
+    $_SESSION["pass"] = $row['pass'];
     $_SESSION["user_type"] = $row['user_type'];
-    echo "1 res";
+    $_SESSION["imgAddrLogin"] = $row['img_addr'];
   } else {
     echo "0 results";
   }
@@ -75,15 +76,52 @@ function logout()
 
 function Panel()
 {
-  
+
   if (checkAdmin() && $_SESSION["checkLog"] == true) {
-    $_SESSION["User"] = "Admin"; 
+    $_SESSION["User"] = "Admin";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "shop_db";
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if (!$conn) {
+      echo ("Connection failed: " . mysqli_connect_error());
+      return;
+    }
+    $sql = "SELECT `Name`, `pass`, `user_type`, `id` FROM `users` WHERE 1";
+    $res = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($res) > 0) {
+      $_SESSION["AdminList"] = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    } else {
+      echo "0 results";
+    }
+    mysqli_close($conn);
+
     return header("Location: http://localhost/Web-school/View/Panel.php");
-   
   } elseif (checkAdmin() == false && $_SESSION["checkLog"] == true) {
-    $_SESSION["User"] = "Standard"; 
+    $_SESSION["User"] = "Standard";
+    UserInfo();
     return header("Location: http://localhost/Web-school/View/Panel.php");
-    
   }
-  
+}
+
+function UserInfo()
+{
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "shop_db";
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  if (!$conn) {
+    echo ("Connection failed: " . mysqli_connect_error());
+    return;
+  }
+  $sql = "SELECT * FROM `users` WHERE `Name` = '{$_SESSION["name"]}' AND `pass` = {$_SESSION["pass"]}";
+  $res = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($res) > 0) {
+    $_SESSION["UserInfo"][] = mysqli_fetch_array($res, MYSQLI_ASSOC);
+  } else {
+    echo "0 results";
+  }
+  mysqli_close($conn);
 }
