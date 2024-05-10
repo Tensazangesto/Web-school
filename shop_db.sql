@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2024 at 07:31 PM
+-- Generation Time: May 10, 2024 at 03:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,17 +32,18 @@ CREATE TABLE `users` (
   `pass` varchar(30) NOT NULL,
   `user_type` tinyint(4) NOT NULL,
   `img_addr` varchar(255) NOT NULL,
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `Rigester_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`Name`, `pass`, `user_type`, `img_addr`, `id`) VALUES
-('ali', '789', 1, '..\\Assets\\img\\firstOnepng.png', 13),
-('hello', '456', 0, '..\\Assets\\img\\second.png', 16),
-('helloD', '123', 1, '..\\Assets\\img\\third.png', 17);
+INSERT INTO `users` (`Name`, `pass`, `user_type`, `img_addr`, `id`, `Rigester_date`) VALUES
+('ali', '789', 2, '..\\Assets\\img\\third.png\"', 25, '2034-05-17'),
+('hello', '321', 1, '..\\Assets\\img\\second.png', 26, '2024-05-10'),
+('javad', '456', 1, '..\\Assets\\img\\fourth.png', 27, '2024-05-10');
 
 --
 -- Indexes for dumped tables
@@ -62,7 +63,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

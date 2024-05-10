@@ -1,4 +1,4 @@
-<?php include("HeaderSession.php");
+<?php include("Contoroller/AllUsers.php");
 if (isset($_SESSION["checkLog"]) == true) {
     header("location: http://localhost/Web-school/View/");
 } ?>
@@ -24,14 +24,14 @@ if (isset($_SESSION["checkLog"]) == true) {
     <div>
         <div id="LoginBox">
             <div id="rightSide">
-                <form action="http://localhost/Web-school/View/AllFunc.php" method="post">
+                <form action="http://localhost/Web-school/View/Users/User.php" method="post">
                     <div id="inputs">
                         <img src="../assets/img/nike-512.png" alt="" id="nikesign">
                         <input type="text" placeholder="name" name="Username">
                         <input type="password" placeholder="Password" name="Pass">
                         <input type="hidden" name="action" value="Login">
                         <div id="setBox">
-                            <button type="submit">sign up</button>
+                            <button type="submit">login</button>
                         </div>
                 </form>
             </div>

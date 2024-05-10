@@ -1,4 +1,4 @@
-<?php include("HeaderSession.php");
+<?php include("Contoroller/AllUsers.php");
 fetchData();
 if (empty($_SESSION["checkLog"])) {
     header("location: http://localhost/Web-school/View/Login.php");
@@ -6,9 +6,9 @@ if (empty($_SESSION["checkLog"])) {
 
 function userType()
 {
-    if ($_SESSION['user_type'] == 0) {
+    if ($_SESSION['user_type'] == 1) {
         return "user";
-    } elseif ($_SESSION['user_type'] == 1) {
+    } elseif ($_SESSION['user_type'] == 2) {
         return "admin";
     }
 }
@@ -35,10 +35,10 @@ function userType()
             <?php } ?>
             <?php
             if (checkLog()) { ?>
-                <nav><a href="http://localhost/Web-school/View/AllFunc.php?action=logout">Logout</a></nav>
+                <nav><a href="http://localhost/Web-school/View/Users/User.php?action=logout">Logout</a></nav>
 
 
-                <nav><a href="http://localhost/Web-school/View/AllFunc.php?action=pan">Panel</a></nav>
+                <nav><a href="http://localhost/Web-school/View/Contoroller/AllFunc.php?action=pan">Panel</a></nav>
             <?php } ?>
         </div>
     </header>
@@ -47,10 +47,10 @@ function userType()
             <img src="<?php echo $_SESSION['imgAddrLogin']; ?>">
         <?php } ?>
         <?php if (isset($_SESSION['User']) && checkAdmin()) { ?>
-            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=Edit">Edit</a></button>
+            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/Contoroller/AllFunc.php?action=Edit">Edit</a></button>
         <?php } ?>
         <?php if (isset($_SESSION['User']) && checkAdmin()) { ?>
-            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=insert">Insert</a></button>
+            <button class="btnStyle"><a class="aStyle" href="http://localhost/Web-school/View/Contoroller/AllFunc.php?action=insert">Insert</a></button>
         <?php } ?>
     </div>
     <div id="rightSide">
@@ -61,13 +61,14 @@ function userType()
                     <th scope="col">Name</th>
                     <th scope="col">Password</th>
                     <th scope="col">User type</th>
+                    <th scope="col">Register date</th>
                     <?php if (checkAdmin()) { ?>
                         <th scope="col">Buttons</th>
                     <?php } ?>
                 </tr>
             </thead>
             <tbody>
-                <?php if (checkAdmin()&& isset($_SESSION['AdminList'])) { ?>
+                <?php if (checkAdmin() && isset($_SESSION['AdminList'])) { ?>
                     <?php foreach ($_SESSION['AdminList'] as  $value) { ?>
                         </tr>
                         <th scope="row"><?php echo $ID = $value['id'] ?></th>
@@ -75,15 +76,16 @@ function userType()
                         <td><?php echo $value['pass'] ?></td>
                         <td>
                             <?php
-                            if ($value['user_type'] == 1) {
+                            if ($value['user_type'] == 2) {
                                 echo "admin";
                             } else {
                                 echo "user";
                             }
                             ?></td>
+                        <td><?php echo $value['Rigester_date'] ?></td>
                         <?php if (checkAdmin()) { ?>
                             <td>
-                                <button class="btnStyleDel"><a class="aStyle" href="http://localhost/Web-school/View/AllFunc.php?action=Del&id=<?php echo $value['id'] ?>">Delete</a></button>
+                                <button class="btnStyleDel"><a class="aStyle" href="http://localhost/Web-school/View/Admin/Admin.php?action=Del&id=<?php echo $value['id'] ?>">Delete</a></button>
                             </td>
                         <?php } ?>
                         <tr>
@@ -96,6 +98,7 @@ function userType()
                             <td><?php echo $value['Name'] ?></td>
                             <td><?php echo $value['pass'] ?></td>
                             <td><?php echo userType() ?></td>
+                            <td><?php echo $value['Rigester_date'] ?></td>
                         </tr>
                     <?php } ?>
                 <?php } ?>

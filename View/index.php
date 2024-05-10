@@ -1,5 +1,5 @@
 <?php
-include("HeaderSession.php");
+include("Contoroller/AllUsers.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,10 +22,10 @@ include("HeaderSession.php");
             <?php } ?>
             <?php
             if (checkLog()) { ?>
-                <nav><a href="http://localhost/Web-school/View/AllFunc.php?action=logout">Logout</a></nav>
+                <nav><a href="http://localhost/Web-school/View/Users/User.php?action=logout">Logout</a></nav>
 
 
-                <nav><a href="http://localhost/Web-school/View/AllFunc.php?action=pan">Panel</a></nav>
+                <nav><a href="http://localhost/Web-school/View/Contoroller/AllFunc.php?action=pan">Panel</a></nav>
             <?php } ?>
         </div>
         </div>
